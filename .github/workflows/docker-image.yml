@@ -48,8 +48,11 @@ jobs:
           port: 22
           debug: true
           script: |
-            
+          
+            set -e
             cd /home/devops/devops-assessment
+
+            git pull origin maine 
 
             # pull images
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest
@@ -59,4 +62,4 @@ jobs:
             docker-compose down 
 
             #Automatically deploy
-            ./deploy.sh
+            docker-compose up -d --build
