@@ -52,7 +52,7 @@ jobs:
             set -e
             cd /home/devops/devops-assessment
 
-            git pull origin maine 
+            git pull origin main
 
             # pull images
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest
