@@ -56,7 +56,7 @@ jobs:
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/react-frontend:latest
 
             # Bring down any running containers
-            docker compose down
+            docker-compose down
 
             # Start containers in detached mode
-            docker compose up -d
+            docker-compose up -d
