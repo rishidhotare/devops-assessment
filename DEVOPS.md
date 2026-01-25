@@ -72,7 +72,7 @@ sudo gpasswd -a devops dockers
 
 ##  Setup Guide
 
-### 1️⃣ Dockerize: Created separate multistage-Dockerfile for the Frontend and Backend and defined environment variables
+#### 1️⃣ Dockerize: Created separate multistage-Dockerfile for the Frontend and Backend and defined environment variables
 
 ---
 
@@ -91,17 +91,23 @@ VITE_API_URL=http://django-backend:8000
 
 ---
 
-### 2️⃣ Orchestration: Created a docker-compose.yml file to run both services. 
+#### 2️⃣ Orchestration: Created a docker-compose.yml file to run both services on machine. 
 
 ``` bash
 git clone https://github.com/rishidhotare/devops-assessment.git
 cd devops-assessment
-```
-### 3️⃣ Run Locally Using Docker Compose
-
-```bash
 docker-compose up -d --build
 ```
+### 4️⃣ Verify Containers
+
+``` bash
+docker images
+docker ps
+```
+
+Expected:
+* django-backend running on port 8000
+* react-frontend running on port 3000
 
 #### Access Services
 
@@ -111,16 +117,6 @@ docker-compose up -d --build
 
 ---
 
-### 4️⃣ Verify Containers
-
-``` bash
-docker ps
-```
-
-Expected:
-
-* django-backend running on port 8000
-* react-frontend running on port 3000
 
 ---
 
