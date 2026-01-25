@@ -18,7 +18,7 @@ Repository: [https://github.com/Nexgensis/devops-assessment](https://github.com/
 
 ## 🧱 Architecture
 
-```
+``` bash
 User
   │
   ▼
@@ -48,9 +48,10 @@ Django REST API (Port 8000)
 Create & Use Non-Root User 
 For security, the application is deployed using a **non-root user** named `devops`.
 
-
+```bash
 useradd devops
 passwd devops
+```
 - set password and add user in /etc/sudoers
 
 > ⚠️ Logout & login again to apply Docker group permissions.
@@ -58,11 +59,14 @@ passwd devops
 All application files and containers are managed using the `devops` user.
 
 # switch to devops user
+```bash
 sudo su - devops
+```
 
 # allow docker without sudo
+```bash
 sudo gpasswd -a devops dockers
-
+```
 
 ---
 
