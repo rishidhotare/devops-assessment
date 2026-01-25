@@ -53,18 +53,20 @@ jobs:
 
             git pull origin main
 
-            echo "Stopping and removing existing containers..."
+            echo "Stopping and removing containers..."
             docker-compose down --remove-orphans
 
-            echo "Removing old backend image..."
-            docker rmi -f ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest || true
+            echo "Removing Docker Hub images..."
+            docker rmi -f \
+              ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest \
+              ${{ secrets.DOCKERHUB_USERNAME }}/react-frontend:latest || true
 
-            echo "Removing old frontend image..."
-            docker rmi -f ${{ secrets.DOCKERHUB_USERNAME }}/react-frontend:latest || true
+            echo "Removing dangling images..."
+            docker image prune -f
 
             echo "Pulling latest images if available..."
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest || echo "Backend image not found. Will build locally."
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/react-frontend:latest || echo "Frontend image not found. Will build locally."
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest || echo "Backend image will be built locally"
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/react-frontend:latest || echo "Frontend image will be built locally"
 
             echo "Starting fresh deployment..."
             docker-compose up -d --build --force-recreate
