@@ -242,3 +242,17 @@ sudo chmod 600 ~/.ssh/authorized_keys
 * EC2_HOST
 * EC2_KEY
 * EC2_USER
+
+
+## Provision a Virtual Machine using Terraform
+
+#### 1. Instance created
+
+![Terraform instance created](https://github.com/user-attachments/assets/450b18ec-dd5c-4a61-9b57-c3a39d16415f)
+
+
+#### 2 . Security grp Ports 80 22 and 443 allowed
+
+![security grp ports](https://github.com/user-attachments/assets/c9a6117e-641f-42a2-83e3-e737b7ef163b)
+
+
