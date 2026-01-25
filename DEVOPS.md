@@ -214,4 +214,13 @@ echo "ssh-rsa - devops.pub key content" >> ~/.ssh/authorized_keys
 sudo chmod 600 ~/.ssh/authorized_keys
 ```
 
-## Important Note - Make sure your machine key content same as your github action secret key
+#### Important Note - Make sure your machine key content same as your github action secret key.
+
+
+### GitHub Action Secret Environments which I set :
+
+* DOCKERHUB_PASSWORD
+* DOCKERHUB_USERNAME
+* EC2_HOST
+* EC2_KEY
+* EC2_USER
