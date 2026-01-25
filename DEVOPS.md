@@ -111,9 +111,9 @@ Expected:
 
 #### Access Services
 
-* Frontend: http://43.204.36.124:3000/
-* Backend API: http://43.204.36.124:8000/api/hello/
-* Backend admin : http://43.204.36.124:8000/admin/
+* Frontend: http://13.233.68.52:3000/
+* Backend API: http://13.233.68.52:8000/api/hello/
+* Backend admin : http://13.233.68.52:8000/admin/
 
 ---
 ## Added Screenshot file in repository
