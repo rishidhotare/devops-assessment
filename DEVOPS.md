@@ -174,6 +174,23 @@ Made chages in  `.github/workflows/ci-cd.yml` file
 * [x] CI/CD pipeline triggers on push
 * [x] Automated EC2 deployment
 
+#### In Short :
+```
+* Created non root user named devops and given sudo permissions
+* Created multi-stage dockerfile for both frontend and backend, and set environment variables.
+* Installed Docker, Git, Docker-compose on devops user and add docker in grp
+* Created docker-compose.yml file for deployment
+* For backend and frontend communication I changed path in App.txs 
+   - const response = await axios.get('http://43.204.36.124:8000/api/hello/')
+* Created CI-CD github action to Build Docker images and push them to dockerhub registry.
+  Automate the deployment in CI-CD when the developer make changes in repository automatically shows latest change in server.
+* For CI-CD I set secret variables in GitHub Actions
+	* DOCKERHUB_PASSWORD
+	* DOCKERHUB_USERNAME
+	* EC2_HOST
+	* EC2_KEY
+	* EC2_USER
+```
 
 ## 🐞 Troubleshooting Log
 
