@@ -58,12 +58,12 @@ passwd devops
 
 All application files and containers are managed using the `devops` user.
 
-# switch to devops user
+switch to devops user
 ```bash
 sudo su - devops
 ```
 
-# allow docker without sudo
+allow docker without sudo
 ```bash
 sudo gpasswd -a devops dockers
 ```
@@ -126,11 +126,9 @@ Expected:
 
 ## ☁️ Phase 2: CI/CD Pipeline
 
-Created a GitHub Actions workflow that triggers on every push to the main branch:
+Created a GitHub Actions workflow that triggers on every push to the main branch:  
 
-### 1⃣  
-
-### 4️⃣ GitHub Actions CI/CD Flow for 
+###  GitHub Actions CI/CD Flow for 
 1. Build & Push: Build Docker images and pushed in my dockerhub repository.
 
 ---
@@ -150,7 +148,7 @@ Workflow file: `.github/workflows/ci-cd.yml`
 
 ---
 
-2. Deployment: * Automate the deployment to your environment
+### 2. Deployment: * Automate the deployment to your environment
 
 Made chages in  `.github/workflows/ci-cd.yml` file
 
