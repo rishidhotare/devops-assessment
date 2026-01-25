@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ---------------- Checkout Code ----------------
+    
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -22,7 +22,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      # ---------------- Build & Push Backend ----------------
+      # ---------------- build & push Backend ----------------
       - name: Build & Push Django Backend
         uses: docker/build-push-action@v5
         with:
@@ -30,7 +30,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest
 
-      # ---------------- Build & Push Frontend ----------------
+      # ---------------- build & Ppush Frontend ----------------
       - name: Build & Push React Frontend
         uses: docker/build-push-action@v5
         with:
@@ -48,15 +48,15 @@ jobs:
           port: 22
           debug: true
           script: |
-            # Navigate to the directory containing docker-compose.yml
+            
             cd /home/devops/devops-assessment
 
-            # Pull the latest images
+            # pull images
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/react-frontend:latest
 
-            # Bring down any running containers
-            docker-compose down
+            # delete container
+            docker-compose down 
 
-            # Start containers in detached mode
-            docker-compose up -d
+            #Automatically deploy
+            ./deploy.sh
