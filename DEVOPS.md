@@ -1,8 +1,8 @@
 ##  Project Overview
 
 end-to-end DevOps pipeline for a full-stack application using
- Backend: Django 6.0 (REST API)
- Frontend: React (Vite, TypeScript)
+*  Backend: Django 6.0 (REST API)
+*  Frontend: React (Vite, TypeScript)
 
 The implementation covers:
 
