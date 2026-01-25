@@ -192,9 +192,12 @@ Made chages in  `.github/workflows/ci-cd.yml` file
 	* EC2_USER
 ```
 
+
+
+
 ## 🐞 Troubleshooting Log
 
-### Issue 1: React App Could Not Reach Django Backend
+#### Issue 1: React App Could Not Reach Django Backend
 
 **Problem:**
 Frontend failed with network error while calling the backend API.
@@ -209,7 +212,7 @@ Used `localhost` inside App.txs. Containers cannot access host `localhost`.
 Updated API URL to use Docker service name:
 > const response = await axios.get('http://43.204.36.124:8000/api/hello/')
 
-### Issue 2: SSH Deployment Failing in GitHub Actions
+#### Issue 2: SSH Deployment Failing in GitHub Actions
 
 **Problem:**
 GitHub Actions failed to write SSH key.
