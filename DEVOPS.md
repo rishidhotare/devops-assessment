@@ -89,9 +89,10 @@ VITE_API_URL=http://django-backend:8000
 
 ### 2️⃣ Orchestration: Createed a docker-compose.yml file to run both services. 
 
+``` bash
 git clone https://github.com/rishidhotare/devops-assessment.git
 cd devops-assessment
-
+```
 ### 3️⃣ Run Locally Using Docker Compose
 
 ```bash
@@ -108,8 +109,9 @@ docker-compose up -d --build
 
 ### 4️⃣ Verify Containers
 
+``` bash
 docker ps
-
+```
 
 Expected:
 
@@ -131,16 +133,16 @@ Created a GitHub Actions workflow that triggers on every push to the main branch
 
 Workflow file: `.github/workflows/ci-cd.yml`
 
-Triggered automatically on push to main branch
-Checks out latest code from GitHub
-Logs in to Docker Hub using secrets
-Builds & pushes Django backend Docker image
-Builds & pushes React frontend Docker image
-Connects to AWS EC2 via SSH
-Pulls latest code and Docker images on EC2
-Stops existing containers using Docker Compose
-Deploys updated containers using Docker Compose
-Ensures fully automated build, push, and deployment
+* Triggered automatically on push to main branch
+* Checks out latest code from GitHub
+* Logs in to Docker Hub using secrets
+* Builds & pushes Django backend Docker image
+* Builds & pushes React frontend Docker image
+* Connects to AWS EC2 via SSH
+* Pulls latest code and Docker images on EC2
+* Stops existing containers using Docker Compose
+* Deploys updated containers using Docker Compose
+* Ensures fully automated build, push, and deployment
 
 ---
 
