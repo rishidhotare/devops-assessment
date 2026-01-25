@@ -10,9 +10,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir \
-       django \
-       djangorestframework \
-       django-cors-headers
+    && pip install -r requirements.txt   
 
 # ---------- Runtime ----------
 FROM python:3.12-slim
