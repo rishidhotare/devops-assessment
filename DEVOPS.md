@@ -177,3 +177,41 @@ Made chages in  `.github/workflows/ci-cd.yml` file
 * [x] Frontend communicates with backend
 * [x] CI/CD pipeline triggers on push
 * [x] Automated EC2 deployment
+
+
+## 🐞 Troubleshooting Log
+
+### Issue 1: React App Could Not Reach Django Backend
+
+**Problem:**
+Frontend failed with network error while calling the backend API.
+
+**Root Cause:**
+Used `localhost` inside App.txs. Containers cannot access host `localhost`.
+
+**Error:** 
+> const response = await axios.get('http://localhost:8000/api/hello/')
+
+**Solution:**
+Updated API URL to use Docker service name:
+> const response = await axios.get('http://43.204.36.124:8000/api/hello/')
+
+### Issue 2: SSH Deployment Failing in GitHub Actions
+
+**Problem:**
+GitHub Actions failed to write SSH key.
+
+**Root Cause:**
+`.ssh` directory missing on EC2.
+
+**Solution:**
+
+```bash
+sudo vi devops.pem ##added my EC2 machine key content
+sudo chmod 400 devops.pem
+ssh-keygen -t rsa -b 4096 -f devops
+echo "ssh-rsa - devops.pub key content" >> ~/.ssh/authorized_keys
+sudo chmod 600 ~/.ssh/authorized_keys
+```
+
+## Important Note - Make sure your machine key content same as your github action secret key
