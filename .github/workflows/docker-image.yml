@@ -1,4 +1,3 @@
-
 name: CI/CD - Build, Push & Deploy
 
 on:
@@ -11,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -22,7 +20,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      # ---------------- build & push Backend ----------------
+      # ---------------- Build & Push Backend ----------------
       - name: Build & Push Django Backend
         uses: docker/build-push-action@v5
         with:
@@ -30,7 +28,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest
 
-      # ---------------- build & Ppush Frontend ----------------
+      # ---------------- Build & Push Frontend ----------------
       - name: Build & Push React Frontend
         uses: docker/build-push-action@v5
         with:
@@ -50,23 +48,23 @@ jobs:
           debug: true
           script: |
             set -e
+
             cd /home/devops/devops-assessment
 
             git pull origin main
 
-            echo "Checking backend image..."
-            if ! docker pull ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest; then
-            echo "Backend image not found. Will build locally."
-            fi
+            echo "Stopping and removing existing containers..."
+            docker-compose down --remove-orphans
 
-            echo "Checking frontend image..."
-            if ! docker pull ${{ secrets.DOCKERHUB_USERNAME }}/react-frontend:latest; then
-            echo "Frontend image not found. Will build locally."
-            fi
+            echo "Removing old backend image..."
+            docker rmi -f ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest || true
 
-            docker-compose down
+            echo "Removing old frontend image..."
+            docker rmi -f ${{ secrets.DOCKERHUB_USERNAME }}/react-frontend:latest || true
 
-            echo "Starting deployment..."
-            docker-compose up -d --build
+            echo "Pulling latest images if available..."
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest || echo "Backend image not found. Will build locally."
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/react-frontend:latest || echo "Frontend image not found. Will build locally."
 
-          
+            echo "Starting fresh deployment..."
+            docker-compose up -d --build --force-recreate
