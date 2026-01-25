@@ -1,4 +1,4 @@
-## 📌 Project Overview
+##  Project Overview
 
 end-to-end DevOps pipeline for a full-stack application using
  Backend: Django 6.0 (REST API)
@@ -16,7 +16,7 @@ Repository: [https://github.com/Nexgensis/devops-assessment](https://github.com/
 
 ---
 
-## 🧱 Architecture
+##  Architecture
 
 ``` bash
 User
@@ -70,7 +70,7 @@ sudo gpasswd -a devops dockers
 
 ---
 
-## 🚀 Setup Guide
+##  Setup Guide
 
 ### 1️⃣ Dockerize: Created separate multistage-Dockerfile for the Frontend and Backend and defined environment variables
 
@@ -91,7 +91,7 @@ VITE_API_URL=http://django-backend:8000
 
 ---
 
-### 2️⃣ Orchestration: Createed a docker-compose.yml file to run both services. 
+### 2️⃣ Orchestration: Created a docker-compose.yml file to run both services. 
 
 ``` bash
 git clone https://github.com/rishidhotare/devops-assessment.git
@@ -148,7 +148,7 @@ Workflow file: `.github/workflows/ci-cd.yml`
 
 ---
 
-### 2. Deployment: * Automate the deployment to your environment
+### 2. Deployment:  Automate the deployment to your environment
 
 Made chages in  `.github/workflows/ci-cd.yml` file
 
@@ -170,7 +170,7 @@ Made chages in  `.github/workflows/ci-cd.yml` file
 
 ---
 
-## 🧪 Validation Checklist
+##  Validation Checklist
 
 * [x] Containers run as non-root users
 * [x] Multi-stage Docker builds
