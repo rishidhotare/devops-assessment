@@ -46,6 +46,7 @@ jobs:
           username: devops
           key: ${{ secrets.EC2_KEY }}
           port: 22
+          debug: true
           script: |
             # Navigate to the directory containing docker-compose.yml
             cd /home/devops/devops-assessment
