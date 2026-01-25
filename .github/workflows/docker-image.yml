@@ -49,18 +49,24 @@ jobs:
           timeout: 120s
           debug: true
           script: |
-          
             set -e
             cd /home/devops/devops-assessment
 
             git pull origin main
 
-            # pull images
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/react-frontend:latest
+            echo "Checking backend image..."
+            if ! docker pull ${{ secrets.DOCKERHUB_USERNAME }}/django-backend:latest; then
+            echo "Backend image not found. Will build locally."
+            fi
 
-            # delete container
-            docker-compose down 
+            echo "Checking frontend image..."
+            if ! docker pull ${{ secrets.DOCKERHUB_USERNAME }}/react-frontend:latest; then
+            echo "Frontend image not found. Will build locally."
+            fi
 
-            #Automatically deploy
+            docker-compose down
+
+            echo "Starting deployment..."
             docker-compose up -d --build
+
+          
